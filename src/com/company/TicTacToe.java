@@ -66,6 +66,13 @@ public class TicTacToe extends JFrame implements MouseListener {
                 buttons[i][j].setText("");
             }
     }
+    private boolean isDraw() {
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                if (states[i][j] == "") return false;
+
+        return true;
+    }
     // checking if one of the players has won the game.
     private String theWinner() {
         /*
@@ -113,7 +120,7 @@ public class TicTacToe extends JFrame implements MouseListener {
             if (winner != "") {
                 int choice = JOptionPane.showConfirmDialog(
                         null,
-                        "X is winner\nDo you want to play againg?",
+                        String.format("%s is winner\nDo you want to play againg?", winner),
                         "TicTacToe",
                         JOptionPane.YES_NO_OPTION);
 
