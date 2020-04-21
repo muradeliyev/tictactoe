@@ -120,7 +120,20 @@ public class TicTacToe extends JFrame implements MouseListener {
             if (winner != "") {
                 int choice = JOptionPane.showConfirmDialog(
                         null,
-                        String.format("%s is winner\nDo you want to play againg?", winner),
+                        String.format("%s is winner\nDo you want to play again?", winner),
+                        "TicTacToe",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (choice == JOptionPane.YES_OPTION) {
+                    restartGame(); // this restarts the game
+                } else if (choice == JOptionPane.NO_OPTION) {
+                    dispose(); // this closes the game
+                }
+            }
+            else if (isDraw()) {
+                int choice = JOptionPane.showConfirmDialog(
+                        null,
+                        "The game is draw.\nDo you want to play again?",
                         "TicTacToe",
                         JOptionPane.YES_NO_OPTION);
 
